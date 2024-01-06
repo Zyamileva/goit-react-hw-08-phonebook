@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import { Container } from './App.styled';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Container, SubTitle, Title } from './App.styled';
 import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
@@ -21,7 +22,11 @@ export class App extends Component {
     this.state.contacts.some(({ name }) => {
       return name.toLocaleLowerCase() === newContact.name.toLocaleLowerCase();
     })
-      ? console.log('first')
+      ? Notify.warning(`${newContact.name} is already in the contact list`, {
+          width: '400px',
+          timeout: 5000,
+          fontSize: '24px',
+        })
       : this.setState(({ contacts }) => {
           return { contacts: [...contacts, newContact] };
         });
@@ -39,16 +44,25 @@ export class App extends Component {
     );
   };
 
+  onDeleteContact = idContact => {
+    this.setState(({ contacts }) => ({
+      contacts: contacts.filter(({ id }) => id !== idContact),
+    }));
+  };
+
   render() {
     const { contacts, filter } = this.state;
 
     return (
       <Container>
-        <h1>Phonebook</h1>
+        <Title>Phonebook</Title>
         <ContactForm onSubmit={this.onChangeSubmit} />
-        <h2>Contacts</h2>
+        <SubTitle>Contacts</SubTitle>
         <Filter filter={filter} onChangeFilter={this.onChangeFilter} />
-        <ContactList contacts={this.findByLetter()} />
+        <ContactList
+          contacts={this.findByLetter()}
+          onDeleteContact={this.onDeleteContact}
+        />
       </Container>
     );
   }
