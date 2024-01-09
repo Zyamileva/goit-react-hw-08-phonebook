@@ -4,7 +4,6 @@ import { ContactItem } from './ContactItem/ContactItem';
 import { ContactsListStyle } from './ContactList.styled';
 
 export const ContactList = ({ contacts, onDeleteContact }) => {
-  console.log('kkk', { contacts });
   return (
     <ContactsListStyle>
       {contacts.map(contact => (
