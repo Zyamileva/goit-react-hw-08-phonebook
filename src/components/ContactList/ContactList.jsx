@@ -1,27 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ContactItem } from './ContactItem/ContactItem';
 import { ContactsListStyle } from './ContactList.styled';
+import { useSelector } from 'react-redux';
+import { getFilter } from '../redux/filterSlice';
+import { getContacts } from '../redux/contactsSlice';
 
-export const ContactList = ({ contacts, onDeleteContact }) => {
+export const ContactList = () => {
+  const phoneBook = useSelector(getContacts);
+  const filterName = useSelector(getFilter);
+
+  const findByLetter = phoneBook.filter(({ name }) =>
+    name.toLocaleLowerCase().includes(filterName.toLocaleLowerCase())
+  );
+
   return (
     <ContactsListStyle>
-      {contacts.map(contact => (
+      {findByLetter.map(contact => (
         <ContactItem
           name={contact.name}
           number={contact.number}
           key={contact.id}
           id={contact.id}
-          onDeleteContact={onDeleteContact}
         />
       ))}
     </ContactsListStyle>
   );
-};
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.objectOf(PropTypes.string.isRequired).isRequired
-  ).isRequired,
-  onDeleteContact: PropTypes.func.isRequired,
 };
