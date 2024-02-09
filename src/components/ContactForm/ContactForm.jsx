@@ -6,7 +6,8 @@ import {
   InputStyleNumber,
   Button,
 } from './ContactForm.styled';
-import { addContact, getContacts } from '../redux/contactsSlice';
+import { getPhoneBookValue } from '../redux/selectors';
+import { addContacts } from '../services/fetchContacts';
 import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
@@ -14,7 +15,7 @@ export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
-  const phoneBook = useSelector(getContacts);
+  const phoneBook = useSelector(getPhoneBookValue);
 
   const OnChangeInput = evt => {
     const { name, value } = evt.currentTarget;
@@ -46,7 +47,7 @@ export const ContactForm = () => {
       });
       return;
     }
-    dispatch(addContact(data));
+    dispatch(addContacts(data));
     reset();
   };
 

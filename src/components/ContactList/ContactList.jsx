@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ContactItem } from './ContactItem/ContactItem';
 import { ContactsListStyle } from './ContactList.styled';
-import { useSelector } from 'react-redux';
-import { getFilter } from '../redux/filterSlice';
-import { getContacts } from '../redux/contactsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFilter } from '../redux/selectors';
+import { getPhoneBookValue } from '../redux/selectors';
+import { fetchContacts } from '../services/fetchContacts';
 
 export const ContactList = () => {
-  const phoneBook = useSelector(getContacts);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  const phoneBook = useSelector(getPhoneBookValue);
   const filterName = useSelector(getFilter);
 
   const findByLetter = phoneBook.filter(({ name }) =>

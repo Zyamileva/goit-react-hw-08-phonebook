@@ -1,16 +1,16 @@
 import React from 'react';
-import { ContactItemStyle, ButtonStyle } from './ContactItem.styled';
+import { ContactItemStyle, ButtonStyle, Info } from './ContactItem.styled';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
+import { deleteContact } from '../../services/fetchContacts';
 
 export const ContactItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
 
   return (
     <ContactItemStyle>
-      <p>
+      <Info>
         {name}: {number}
-      </p>
+      </Info>
       <ButtonStyle
         type="button"
         onClick={() => {

@@ -16,3 +16,11 @@ export const ButtonStyle = styled.button`
     background-color: #a9a9a9;
   }
 `;
+
+export const Info = styled.p`
+  font-weight: 600;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-shadow: 5px 5px 5px grey;
+`;
