@@ -3,13 +3,13 @@ import { Container, SubTitle, Title } from './App.styled';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
-import { getIsLoading, getError } from './redux/selectors';
+import { selectIsLoading, selectError } from './redux/selectors';
 import { Loader } from './Loader/Loader';
 import { Error } from './Error/Error';
 
 export const App = () => {
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   return (
     <Container>

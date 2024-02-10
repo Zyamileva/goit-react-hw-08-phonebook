@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { ContactItem } from './ContactItem/ContactItem';
 import { ContactsListStyle } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFilter } from '../redux/selectors';
-import { getPhoneBookValue } from '../redux/selectors';
+import { selectVisibleContacts } from '../redux/selectors';
+// import { selectFilter } from '../redux/selectors';
 import { fetchContacts } from '../services/fetchContacts';
 
 export const ContactList = () => {
@@ -12,12 +12,13 @@ export const ContactList = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const phoneBook = useSelector(getPhoneBookValue);
-  const filterName = useSelector(getFilter);
+  // const phoneBook = useSelector(selectPhoneBookValue);
+  const findByLetter = useSelector(selectVisibleContacts);
+  // const filterName = useSelector(selectVisibleContacts);
 
-  const findByLetter = phoneBook.filter(({ name }) =>
-    name.toLocaleLowerCase().includes(filterName.toLocaleLowerCase())
-  );
+  // const findByLetter = phoneBook.filter(({ name }) =>
+  //   name.toLocaleLowerCase().includes(filterName.toLocaleLowerCase())
+  // );
 
   return (
     <ContactsListStyle>
