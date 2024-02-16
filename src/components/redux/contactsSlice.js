@@ -4,17 +4,9 @@ import {
   fetchContacts,
   deleteContact,
 } from '../services/fetchContacts';
+import { handlePending, handleRejected } from './shared/functions/redux';
 
-const handlePending = state => {
-  state.isLoading = true;
-};
-
-const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
-
-export const contactsSlice = createSlice({
+const contactsSlice = createSlice({
   name: 'phoneBook',
   initialState: {
     items: [],
@@ -50,3 +42,5 @@ export const contactsSlice = createSlice({
       .addCase(deleteContact.rejected, handleRejected);
   },
 });
+
+export default contactsSlice.reducer;
