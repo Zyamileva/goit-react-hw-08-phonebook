@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signup } from 'components/services/auth-api';
-import { store } from './store';
-import { handlePending, handleRejected } from './shared/functions/redux';
+import { signup } from './auth-operations';
+import { store } from '../store';
+import { handlePending, handleRejected } from '../shared/functions/redux';
 
 const authInitialState = {
   user: {},

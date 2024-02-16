@@ -34,17 +34,24 @@ const RegisterForm = ({ onSubmit }) => {
   const emailId = useId();
   const passwordId = useId();
 
-  // const { name, email, password } = state;
+  const { name, email, password } = state;
 
   return (
     <form onSubmit={handleSubmit}>
       <Div>
         <Label htmlFor={nameId}>Name:</Label>
-        <input name="name" onChange={handleChange} id={nameId} required></input>
+        <input
+          value={name}
+          name="name"
+          onChange={handleChange}
+          id={nameId}
+          required
+        ></input>
       </Div>
       <Div>
         <Label htmlFor={emailId}>Email:</Label>
         <input
+          value={email}
           type="email"
           name="email"
           onChange={handleChange}
@@ -53,10 +60,12 @@ const RegisterForm = ({ onSubmit }) => {
         ></input>
       </Div>
       <Div>
-        <Label html={passwordId}>Password:</Label>
+        <Label htmlFor={passwordId}>Password:</Label>
         <input
+          value={password}
           type="password"
           name="password"
+          autoComplete="of"
           onChange={handleChange}
           id={passwordId}
           required

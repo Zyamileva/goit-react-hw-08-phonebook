@@ -6,7 +6,7 @@ import {
   InputStyleNumber,
   Button,
 } from './ContactForm.styled';
-import { selectPhoneBookValue } from '../redux/selectors';
+import { selectPhoneBookValue } from '../redux/contacts/contacts-selectors';
 import { addContacts } from '../services/fetchContacts';
 import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';

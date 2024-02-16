@@ -1,6 +1,6 @@
 import React from 'react';
 import { Div } from './Error.styled.jsx';
-import { selectError } from 'components/redux/selectors.js';
+import { selectError } from 'components/redux/contacts/contacts-selectors.js';
 import { useSelector } from 'react-redux';
 
 export const Error = () => {

@@ -3,8 +3,8 @@ import {
   addContacts,
   fetchContacts,
   deleteContact,
-} from '../services/fetchContacts';
-import { handlePending, handleRejected } from './shared/functions/redux';
+} from '../../services/fetchContacts';
+import { handlePending, handleRejected } from '../shared/functions/redux';
 
 const contactsSlice = createSlice({
   name: 'phoneBook',

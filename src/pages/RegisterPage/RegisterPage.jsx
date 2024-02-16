@@ -1,12 +1,12 @@
 import RegisterForm from 'components/RegisterForm/RegisterForm';
-import { signup } from 'components/services/auth-api';
+import { signup } from 'components/redux/auth/auth-operations';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
   const handleSignup = data => {
-    console.log('first', signup(data));
+    // console.log('first', signupRequest(data));
     dispatch(signup(data));
   };
 
