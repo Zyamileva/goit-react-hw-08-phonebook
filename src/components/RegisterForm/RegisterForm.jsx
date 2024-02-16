@@ -34,7 +34,7 @@ const RegisterForm = ({ onSubmit }) => {
   const emailId = useId();
   const passwordId = useId();
 
-  const { name, email, password } = state;
+  // const { name, email, password } = state;
 
   return (
     <form onSubmit={handleSubmit}>
