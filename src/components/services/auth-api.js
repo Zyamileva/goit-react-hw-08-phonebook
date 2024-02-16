@@ -8,4 +8,5 @@ export const signupRequest = async body => {
   console.log('first', body);
   const { data } = await authInstance.post('/users/signup', body);
   console.log('data', data);
+  return data;
 };
