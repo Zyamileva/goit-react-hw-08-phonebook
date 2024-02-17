@@ -1,13 +1,13 @@
 import React, { useId, useState } from 'react';
-import { Div, Label } from './RegisterForm.styled';
+import { Div, Label } from './LoginForm.styled';
 
 const INITIAL_STATE = {
-  name: '',
   email: '',
   password: '',
 };
 
-const RegisterForm = ({ onSubmit }) => {
+const LoginForm = ({ onSubmit }) => {
+  console.log('onSubmit', onSubmit);
   const [state, setState] = useState({ ...INITIAL_STATE });
 
   const handleChange = ({ target }) => {
@@ -30,24 +30,14 @@ const RegisterForm = ({ onSubmit }) => {
     setState({ ...INITIAL_STATE });
   };
 
-  const nameId = useId();
   const emailId = useId();
   const passwordId = useId();
-
-  const { name, email, password } = state;
+  console.log('emailId', emailId);
+  console.log('state', state);
+  const { email, password } = state;
 
   return (
     <form onSubmit={handleSubmit}>
-      <Div>
-        <Label htmlFor={nameId}>Name:</Label>
-        <input
-          value={name}
-          name="name"
-          onChange={handleChange}
-          id={nameId}
-          required
-        ></input>
-      </Div>
       <Div>
         <Label htmlFor={emailId}>Email:</Label>
         <input
@@ -76,4 +66,4 @@ const RegisterForm = ({ onSubmit }) => {
   );
 };
 
-export default RegisterForm;
+export default LoginForm;
