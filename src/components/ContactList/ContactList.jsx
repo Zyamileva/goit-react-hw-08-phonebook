@@ -3,7 +3,7 @@ import { ContactItem } from './ContactItem/ContactItem';
 import { ContactsListStyle } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectVisibleContacts } from '../../redux/contacts/contacts-selectors';
-import { fetchContacts } from '../../api/fetchContacts';
+import { fetchContacts } from '../../api/contacts-api';
 
 export const ContactList = () => {
   const dispatch = useDispatch();

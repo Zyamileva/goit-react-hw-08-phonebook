@@ -7,7 +7,7 @@ import {
   Button,
 } from './ContactForm.styled';
 import { selectPhoneBookValue } from '../../redux/contacts/contacts-selectors';
-import { addContacts } from '../../api/fetchContacts';
+import { addContacts } from '../../api/contacts-api';
 import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 

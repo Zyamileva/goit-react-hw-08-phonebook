@@ -3,7 +3,7 @@ import {
   addContacts,
   fetchContacts,
   deleteContact,
-} from '../../api/fetchContacts';
+} from '../../api/contacts-api';
 import { handlePending, handleRejected } from '../../shared/functions/redux';
 
 const contactsSlice = createSlice({

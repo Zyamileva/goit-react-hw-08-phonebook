@@ -5,23 +5,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectAuthLoading,
   selectAuthError,
-  selectAuthIsLogin,
 } from '../../redux/auth/auth-slectors';
-import { Navigate } from 'react-router-dom';
 
 const RegisterPage = () => {
   const authLoading = useSelector(selectAuthLoading);
   const authError = useSelector(selectAuthError);
-  const isLogin = useSelector(selectAuthIsLogin);
+  // const isLogin = useSelector(selectAuthIsLogin);
 
   const dispatch = useDispatch();
   const handleSignup = data => {
     dispatch(signup(data));
   };
 
-  if (isLogin) {
-    return <Navigate to="/" />;
-  }
+  // if (isLogin) {
+  //   return <Navigate to="/" />;
+  // }
 
   return (
     <main>
