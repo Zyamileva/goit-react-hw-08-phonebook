@@ -17,7 +17,7 @@ export const Filter = () => {
           width: 400,
           bgcolor: 'rgba(208, 224, 241, 0.822)',
         }}
-        label="Enter name:"
+        label="Search:"
         type="text"
         value={filter}
         name="filter"

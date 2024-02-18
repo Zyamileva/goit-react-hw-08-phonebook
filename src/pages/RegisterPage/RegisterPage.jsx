@@ -18,10 +18,20 @@ const RegisterPage = () => {
 
   return (
     <main>
-      <h1>Please Sign Up</h1>
       {authLoading && <p>....Register in progress</p>}
       <RegisterForm onSubmit={handleSignup} />
-      {authError && <p style={{ color: 'red' }}>{authError}</p>}
+      {authError && (
+        <p
+          style={{
+            color: 'red',
+            display: 'flex',
+            justifyContent: 'center',
+            textAlign: 'centre',
+          }}
+        >
+          {authError}
+        </p>
+      )}
     </main>
   );
 };

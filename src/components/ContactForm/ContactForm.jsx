@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { avatarStyle } from './ContactForm.styled';
 import { selectPhoneBookValue } from '../../redux/contacts/contacts-selectors';
-import { addContacts } from '../../api/contacts-api';
+import { addContacts } from '../../redux/contacts/contacts-operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { Avatar, Button, TextField, Box, Typography } from '@mui/material';
 import ContactsIcon from '@mui/icons-material/Contacts';
@@ -70,6 +70,7 @@ export const ContactForm = () => {
           }}
           margin="normal"
           fullWidth
+          pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           label="Name"
           type="text"
           name="name"
@@ -87,6 +88,7 @@ export const ContactForm = () => {
           }}
           margin="normal"
           fullWidth
+          pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
           label="Phone number"
           type="tel"
           name="number"

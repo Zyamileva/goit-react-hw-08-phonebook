@@ -44,7 +44,7 @@ const RegisterForm = ({ onSubmit }) => {
   const { name, email, password } = state;
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container maxWidth="xs">
       <CssBaseline />
       <Box sx={boxFormStyle}>
         <Avatar sx={avatarStyle}>
@@ -60,6 +60,11 @@ const RegisterForm = ({ onSubmit }) => {
                 autoComplete="fname"
                 value={name}
                 name="name"
+                inputProps={{
+                  inputMode: 'text',
+                  pattern:
+                    '^[a-zA-Zа-яА-Я]+(([a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$',
+                }}
                 onChange={handleChange}
                 variant="outlined"
                 required
@@ -77,6 +82,7 @@ const RegisterForm = ({ onSubmit }) => {
                 value={email}
                 type="email"
                 name="email"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                 onChange={handleChange}
                 id="email"
                 label="Email Address"

@@ -4,7 +4,7 @@ import { ContactItem } from './ContactItem/ContactItem';
 import { ContactsListStyle, boxListStyle } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectVisibleContacts } from '../../redux/contacts/contacts-selectors';
-import { fetchContacts } from '../../api/contacts-api';
+import { fetchContacts } from '../../redux/contacts/contacts-operations';
 
 export const ContactList = () => {
   const dispatch = useDispatch();

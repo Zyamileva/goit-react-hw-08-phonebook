@@ -12,7 +12,6 @@ const setToken = token => {
 };
 
 export const signupRequest = async body => {
-  console.log('first', body);
   const { data } = await authInstance.post('/users/signup', body);
   setToken(data.token);
   return data;

@@ -1,44 +1,16 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import authInstance from './auth-api';
 
-const fetchContactsApi = async (_, thunkAPI) => {
-  try {
-    const responce = await authInstance.get('/contacts');
-    return responce.data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
-  }
+export const fetchContactRequest = async () => {
+  const { data } = await authInstance.get('/contacts');
+  return data;
 };
 
-const addContactApi = async (newContact, thunkAPI) => {
-  try {
-    const response = await authInstance.post('/contacts', newContact);
-    return response.data;
-  } catch (e) {
-    return thunkAPI.rejectWithValue(e.message);
-  }
+export const addContactRequest = async newContact => {
+  const { data } = await authInstance.post('/contacts', newContact);
+  return data;
 };
 
-const deleteContactApi = async (Id, thunkAPI) => {
-  try {
-    const response = await authInstance.delete(`/contacts/${Id}`);
-    return response.data;
-  } catch (e) {
-    return thunkAPI.rejectWithValue(e.message);
-  }
+export const deleteContactRequest = async Id => {
+  const { data } = await authInstance.delete(`/contacts/${Id}`);
+  return data;
 };
-
-export const fetchContacts = createAsyncThunk(
-  'contacts/fetchAll',
-  fetchContactsApi
-);
-
-export const addContacts = createAsyncThunk(
-  'contacts/addContact',
-  addContactApi
-);
-
-export const deleteContact = createAsyncThunk(
-  'contacts/deleteContact',
-  deleteContactApi
-);

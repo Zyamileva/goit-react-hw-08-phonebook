@@ -1,8 +1,10 @@
-import styled from '@emotion/styled';
-
-export const Div = styled.div`
-  font-weight: 700;
-  margin-top: 40px;
-  height: 50px;
-  text-align: center;
-`;
+export const ErrorStyle = {
+  mt: 5,
+  width: 400,
+  p: 5,
+  borderRadius: 3,
+  backgroundColor: 'red',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+};

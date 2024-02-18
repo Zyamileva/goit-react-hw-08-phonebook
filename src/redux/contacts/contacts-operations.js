@@ -1,19 +1,42 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  fetchContactRequest,
+  addContactRequest,
+  deleteContactRequest,
+} from '../../api/contacts-api';
 
-const authInstance = axios.create({
-  baseURL: 'https://connections-api.herokuapp.com',
-});
-
-const signupApi = async (body, { rejectWithValue }) => {
-  try {
-    console.log('body', body);
-    const { data } = await authInstance.post('/users/signup', body);
-    console.log('responce', data);
-    return data;
-  } catch (error) {
-    return rejectWithValue(error.message);
+export const fetchContacts = createAsyncThunk(
+  'contacts/fetchAll',
+  async (_, { rejectWithValue }) => {
+    try {
+      const data = await fetchContactRequest();
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
   }
-};
+);
 
-export const signup = createAsyncThunk('auth/signup', signupApi);
+export const addContacts = createAsyncThunk(
+  'contacts/addContact',
+  async (body, { rejectWithValue }) => {
+    try {
+      const data = await addContactRequest(body);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const deleteContact = createAsyncThunk(
+  'contacts/deleteContact',
+  async (body, { rejectWithValue }) => {
+    try {
+      const data = await deleteContactRequest(body);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
