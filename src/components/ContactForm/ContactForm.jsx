@@ -79,7 +79,6 @@ export const ContactForm = () => {
           onChange={OnChangeInput}
         />
         <TextField
-          // Validation
           sx={{ backgroundColor: 'rgba(208, 224, 241, 0.822)' }}
           inputProps={{
             inputMode: 'tel',

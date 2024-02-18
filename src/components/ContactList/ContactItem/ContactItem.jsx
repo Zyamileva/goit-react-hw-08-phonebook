@@ -1,5 +1,6 @@
 import React from 'react';
-import { ContactItemStyle, ButtonStyle, Info } from './ContactItem.styled';
+import { ListItem, IconButton, ListItemText } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../../api/contacts-api';
 
@@ -7,18 +8,18 @@ export const ContactItem = ({ name, number, id }) => {
   const dispatch = useDispatch();
 
   return (
-    <ContactItemStyle>
-      <Info>
+    <ListItem>
+      <ListItemText>
         {name}: {number}
-      </Info>
-      <ButtonStyle
-        type="button"
+      </ListItemText>
+      <IconButton
         onClick={() => {
           dispatch(deleteContact(id));
         }}
+        aria-label="delete"
       >
-        Delete
-      </ButtonStyle>
-    </ContactItemStyle>
+        <DeleteIcon />
+      </IconButton>
+    </ListItem>
   );
 };

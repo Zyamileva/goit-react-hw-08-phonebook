@@ -1,5 +1,4 @@
 import React from 'react';
-// import { StyledNavLink } from 'components/Navigation/StyleNav';
 import { Paper, Typography, Box } from '@mui/material';
 import { selectAuthIsLogin, selectUser } from '../../redux/auth/auth-slectors';
 import photo from '../../photo/photo.jpg';

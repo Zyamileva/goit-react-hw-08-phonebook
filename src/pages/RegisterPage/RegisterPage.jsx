@@ -10,16 +10,11 @@ import {
 const RegisterPage = () => {
   const authLoading = useSelector(selectAuthLoading);
   const authError = useSelector(selectAuthError);
-  // const isLogin = useSelector(selectAuthIsLogin);
 
   const dispatch = useDispatch();
   const handleSignup = data => {
     dispatch(signup(data));
   };
-
-  // if (isLogin) {
-  //   return <Navigate to="/" />;
-  // }
 
   return (
     <main>

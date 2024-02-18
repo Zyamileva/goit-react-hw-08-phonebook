@@ -21,7 +21,6 @@ export const Filter = () => {
         type="text"
         value={filter}
         name="filter"
-        // value={filterPhoneBook}
         title="Enter the name"
         onChange={e => dispatch(setFilter(e.currentTarget.value))}
       />

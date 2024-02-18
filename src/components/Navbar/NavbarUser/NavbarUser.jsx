@@ -2,9 +2,6 @@ import React from 'react';
 import { selectUser } from '../../../redux/auth/auth-slectors';
 import { logout } from '../../../redux/auth/auth-operations';
 import { useDispatch, useSelector } from 'react-redux';
-// import { Toolbar } from '@mui/material';
-// import { Toolbar } from '@mui/material';
-// import { navbarStyle, MenuLink } from '../NavbarMenu/NavbarMenu.Styled';
 
 import { Button, Toolbar } from '@mui/material';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
