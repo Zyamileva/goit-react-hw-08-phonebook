@@ -47,15 +47,12 @@ const authSlice = createSlice({
       })
       .addCase(logout.pending, handlePending)
       .addCase(logout.fulfilled, (state, { payload }) => {
-        state.user = payload;
-        state.isLogin = true;
         state.isLoading = false;
-        state.error = null;
-      })
-      .addCase(logout.rejected, state => {
-        state.isLoading = false;
+        state.isLogin = false;
+        state.user = {};
         state.token = '';
-      });
+      })
+      .addCase(logout.rejected, handleRejected);
   },
 });
 

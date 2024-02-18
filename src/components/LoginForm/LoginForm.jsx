@@ -1,5 +1,15 @@
-import React, { useId, useState } from 'react';
-import { Div, Label } from './LoginForm.styled';
+import React, { useState } from 'react';
+import { avatarStyle, boxFormStyle } from './Styled';
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  Container,
+  Typography,
+  Box,
+} from '@mui/material';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 const INITIAL_STATE = {
   email: '',
@@ -30,39 +40,58 @@ const LoginForm = ({ onSubmit }) => {
     setState({ ...INITIAL_STATE });
   };
 
-  const emailId = useId();
-  const passwordId = useId();
-  console.log('emailId', emailId);
-  console.log('state', state);
   const { email, password } = state;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Div>
-        <Label htmlFor={emailId}>Email:</Label>
-        <input
-          value={email}
-          type="email"
-          name="email"
-          onChange={handleChange}
-          id={emailId}
-          required
-        ></input>
-      </Div>
-      <Div>
-        <Label htmlFor={passwordId}>Password:</Label>
-        <input
-          value={password}
-          type="password"
-          name="password"
-          autoComplete="of"
-          onChange={handleChange}
-          id={passwordId}
-          required
-        ></input>
-      </Div>
-      <button type="submit">Register</button>
-    </form>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box sx={boxFormStyle}>
+        <Avatar sx={avatarStyle}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign in
+        </Typography>
+        <form noValidate onSubmit={handleSubmit}>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            value={email}
+            type="email"
+            name="email"
+            onChange={handleChange}
+            autoComplete="email"
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            value={password}
+            onChange={handleChange}
+            type="password"
+            id="password"
+            autoComplete="current-password"
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Sign In
+          </Button>
+        </form>
+      </Box>
+    </Container>
   );
 };
 
