@@ -4,7 +4,9 @@ import {
   selectAuthLoading,
   selectAuthError,
 } from '../../redux/auth/auth-slectors';
-import { Container, Title, SubTitle } from './ContactsPage.styled';
+import { CssBaseline, Container, Box } from '@mui/material';
+import { SubTitle } from './ContactsPage.styled';
+import { boxContactsStyle } from '../Styled';
 import { ContactForm } from '../../components/ContactForm/ContactForm';
 import { Filter } from '../../components/Filter/Filter';
 import { Loader } from '../../components/Loader/Loader';
@@ -16,13 +18,16 @@ const ContactsPage = () => {
   const error = useSelector(selectAuthError);
 
   return (
-    <Container>
-      <Title>Phonebook</Title>
-      <ContactForm />
-      <SubTitle>Contacts</SubTitle>
-      <Filter />
-      {isLoading && <Loader />}
-      {error ? <Error /> : <ContactList />}
+    <Container component="main" maxWidth="md">
+      <CssBaseline />
+
+      <Box sx={boxContactsStyle}>
+        <ContactForm />
+        <SubTitle>Contacts</SubTitle>
+        <Filter />
+        {isLoading && <Loader />}
+        {error ? <Error /> : <ContactList />}
+      </Box>
     </Container>
   );
 };

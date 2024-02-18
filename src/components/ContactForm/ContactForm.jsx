@@ -1,14 +1,10 @@
 import { useState } from 'react';
-import {
-  FormStyle,
-  LabelStyle,
-  InputStyleName,
-  InputStyleNumber,
-  Button,
-} from './ContactForm.styled';
+import { avatarStyle } from './ContactForm.styled';
 import { selectPhoneBookValue } from '../../redux/contacts/contacts-selectors';
 import { addContacts } from '../../api/contacts-api';
 import { useDispatch, useSelector } from 'react-redux';
+import { Avatar, Button, TextField, Box, Typography } from '@mui/material';
+import ContactsIcon from '@mui/icons-material/Contacts';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export const ContactForm = () => {
@@ -57,33 +53,58 @@ export const ContactForm = () => {
   };
 
   return (
-    <FormStyle onSubmit={OnChangeSubmit}>
-      <LabelStyle>
-        Name:
-        <InputStyleName
+    <>
+      <Avatar sx={avatarStyle}>
+        <ContactsIcon />
+      </Avatar>
+      <Typography component="h1" variant="h5">
+        Add Contact
+      </Typography>
+      <Box component="form" onSubmit={OnChangeSubmit} sx={{ mt: 1 }}>
+        <TextField
+          sx={{ backgroundColor: 'rgba(208, 224, 241, 0.822)' }}
+          inputProps={{
+            inputMode: 'text',
+            pattern:
+              "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
+          }}
+          margin="normal"
+          fullWidth
+          label="Name"
           type="text"
           name="name"
           value={name}
-          pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
           onChange={OnChangeInput}
         />
-      </LabelStyle>
-      <LabelStyle>
-        Number:
-        <InputStyleNumber
+        <TextField
+          // Validation
+          sx={{ backgroundColor: 'rgba(208, 224, 241, 0.822)' }}
+          inputProps={{
+            inputMode: 'tel',
+            pattern:
+              '+?d{1,4}?[ .-s]?(?d{1,3}?)?[ .-s]?d{1,4}[ .-s]?d{1,4}[ .-s]?d{1,9}',
+          }}
+          margin="normal"
+          fullWidth
+          label="Phone number"
           type="tel"
           name="number"
           value={number}
-          pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
-          title="Phone number must be
-          digits and can contain spaces, dashes, parentheses and can start with +"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           onChange={OnChangeInput}
         />
-      </LabelStyle>
-      <Button type="submit">Add contact</Button>
-    </FormStyle>
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          sx={{ mt: 3, mb: 2, display: 'flex', gap: 3 }}
+        >
+          <p>Add contact</p>
+        </Button>
+      </Box>
+    </>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
-import { MainMenu, MenuLink } from './NavbarMenu.Styled';
+import { navbarStyle, MenuLink } from './NavbarMenu.Styled';
+import { Toolbar } from '@mui/material';
 import menuItems from './menuItems';
 import { selectAuthIsLogin } from '../../../redux/auth/auth-slectors';
 import { useSelector } from 'react-redux';
@@ -16,6 +17,6 @@ const NavbarMenu = () => {
       <MenuLink to={to}>{text}</MenuLink>
     </li>
   ));
-  return <MainMenu>{elements}</MainMenu>;
+  return <Toolbar sx={navbarStyle}>{elements}</Toolbar>;
 };
 export default NavbarMenu;

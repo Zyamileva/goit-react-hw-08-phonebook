@@ -2,6 +2,12 @@ import React from 'react';
 import { selectUser } from '../../../redux/auth/auth-slectors';
 import { logout } from '../../../redux/auth/auth-operations';
 import { useDispatch, useSelector } from 'react-redux';
+// import { Toolbar } from '@mui/material';
+// import { Toolbar } from '@mui/material';
+// import { navbarStyle, MenuLink } from '../NavbarMenu/NavbarMenu.Styled';
+
+import { Button, Toolbar } from '@mui/material';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 
 const NavbarUser = () => {
   const { name } = useSelector(selectUser);
@@ -10,10 +16,18 @@ const NavbarUser = () => {
   const onLogout = () => dispatch(logout());
 
   return (
-    <div>
-      {name}
-      <button onClick={onLogout}>Logout</button>
-    </div>
+    <Toolbar sx={{ display: 'flex', columnGap: 3, fontSize: 17 }}>
+      Welcome, {name}!
+      <Button
+        variant="text"
+        color="inherit"
+        type="button"
+        startIcon={<LogoutOutlinedIcon />}
+        onClick={onLogout}
+      >
+        Log Out
+      </Button>
+    </Toolbar>
   );
 };
 

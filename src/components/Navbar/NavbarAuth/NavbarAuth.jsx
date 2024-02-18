@@ -1,12 +1,13 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Toolbar } from '@mui/material';
+import { navbarStyle, MenuLink } from './NavbarAuth.Styled';
 
 const NavbarAuth = () => {
   return (
-    <div>
-      <NavLink to="/register">Register</NavLink>
-      <NavLink to="/login">Login</NavLink>
-    </div>
+    <Toolbar sx={navbarStyle}>
+      <MenuLink to="/register">Register</MenuLink>
+      <MenuLink to="/login">Login</MenuLink>
+    </Toolbar>
   );
 };
 

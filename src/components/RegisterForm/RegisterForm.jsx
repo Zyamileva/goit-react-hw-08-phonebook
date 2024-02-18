@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-// import { Div, Label } from './RegisterForm.styled';
-// import { Button } from '@mui/material';
+import { boxFormStyle, avatarStyle } from './Styled';
 import {
   Avatar,
   Button,
@@ -42,25 +41,21 @@ const RegisterForm = ({ onSubmit }) => {
     setState({ ...INITIAL_STATE });
   };
 
-  // const nameId = useId();
-  // const emailId = useId();
-  // const passwordId = useId();
-
   const { name, email, password } = state;
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <Box>
-        <Avatar>
+      <Box sx={boxFormStyle}>
+        <Avatar sx={avatarStyle}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
         <form onSubmit={handleSubmit} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
               <TextField
                 autoComplete="fname"
                 value={name}
@@ -103,7 +98,13 @@ const RegisterForm = ({ onSubmit }) => {
               />
             </Grid>
           </Grid>
-          <Button type="submit" fullWidth variant="contained" color="primary">
+          <Button
+            sx={{ mt: 3, mb: 2 }}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+          >
             Sign Up
           </Button>
         </form>
@@ -111,44 +112,5 @@ const RegisterForm = ({ onSubmit }) => {
     </Container>
   );
 };
-// }
-//     <form onSubmit={handleSubmit}>
-//       <Div>
-//         <Label htmlFor={nameId}>Name:</Label>
-//         <input
-//           value={name}
-//           name="name"
-//           onChange={handleChange}
-//           id={nameId}
-//           required
-//         ></input>
-//       </Div>
-//       <Div>
-//         <Label htmlFor={emailId}>Email:</Label>
-//         <input
-//           value={email}
-//           type="email"
-//           name="email"
-//           onChange={handleChange}
-//           id={emailId}
-//           required
-//         ></input>
-//       </Div>
-//       <Div>
-//         <Label htmlFor={passwordId}>Password:</Label>
-//         <input
-//           value={password}
-//           type="password"
-//           name="password"
-//           autoComplete="of"
-//           onChange={handleChange}
-//           id={passwordId}
-//           required
-//         ></input>
-//       </Div>
-//       <button type="submit">Register</button>
-//     </form>
-//   );
-// };
 
 export default RegisterForm;
