@@ -65,12 +65,10 @@ export const ContactForm = () => {
           sx={{ backgroundColor: 'rgba(208, 224, 241, 0.822)' }}
           inputProps={{
             inputMode: 'text',
-            pattern:
-              "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
+            pattern: '^[a-zA-Zа-яА-Я]+(([a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$',
           }}
           margin="normal"
           fullWidth
-          pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           label="Name"
           type="text"
           name="name"
@@ -88,7 +86,6 @@ export const ContactForm = () => {
           }}
           margin="normal"
           fullWidth
-          pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
           label="Phone number"
           type="tel"
           name="number"

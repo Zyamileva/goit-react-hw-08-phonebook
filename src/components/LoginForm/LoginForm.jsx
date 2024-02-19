@@ -17,7 +17,6 @@ const INITIAL_STATE = {
 };
 
 const LoginForm = ({ onSubmit }) => {
-  console.log('onSubmit', onSubmit);
   const [state, setState] = useState({ ...INITIAL_STATE });
 
   const handleChange = ({ target }) => {
